@@ -5,16 +5,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.body.appendChild(button);
 
-    // Show button after scrolling 200px down
-    window.addEventListener("scroll", () => {
-        if (window.scrollY > 200) {
-            button.classList.add("show");
-        } else {
-            button.classList.remove("show");
-        }
-    });
+    // Make it visible immediately
+    button.classList.add("show");
 
-    // Scroll to bottom on click
     button.addEventListener("click", () => {
         window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
     });
