@@ -6,9 +6,9 @@
 namespace SMPLFY\boilerplate;
 
 function bootstrap_boilerplate_plugin() {
-	require_boilerplate_dependencies();
+    require_boilerplate_dependencies();
 
-	DependencyFactory::create_plugin_dependencies();
+    DependencyFactory::create_plugin_dependencies();
 }
 
 /**
@@ -18,14 +18,20 @@ function bootstrap_boilerplate_plugin() {
  */
 function require_boilerplate_dependencies() {
 
-	require_file( 'includes/enqueue_scripts.php' );
-	require_file( 'admin/DependencyFactory.php' );
+    require_file( 'includes/enqueue_scripts.php' );
+    require_file( 'admin/DependencyFactory.php' );
 
-	require_directory( 'public/php/types' );
-	require_directory( 'public/php/entities' );
-	require_directory( 'public/php/repositories' );
-	require_directory( 'public/php/usecases' );
-	require_directory( 'public/php/adapters' );
+    require_directory( 'public/php/types' );
+    require_directory( 'public/php/entities' );
+    require_directory( 'public/php/repositories' );
+    require_directory( 'public/php/usecases' );
+    require_directory( 'public/php/adapters' );
 
 }
+// Instantiate custom handlers not managed by DependencyFactory
 
+require_directory( 'includes/handlers' );
+
+if ( class_exists( '\SmplfyBoilerplate\Handlers\ScrollButtonHandler' ) ) {
+    new \SmplfyBoilerplate\Handlers\ScrollButtonHandler();
+}

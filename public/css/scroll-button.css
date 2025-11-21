@@ -1,0 +1,20 @@
+#scroll-bottom-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    background: #0073aa;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+#scroll-bottom-btn.show {
+    opacity: 1;
+    pointer-events: auto;
+}
