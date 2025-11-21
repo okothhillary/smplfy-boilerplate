@@ -27,6 +27,12 @@ require_once SMPLFY_NAME_PLUGIN_DIR . 'includes/smplfy_bootstrap.php';
 
 bootstrap_boilerplate_plugin();
 
+// Instantiate the scroll button handler
+if ( class_exists( '\SmplfyBoilerplate\Handlers\ScrollButtonHandler' ) ) {
+    new \SmplfyBoilerplate\Handlers\ScrollButtonHandler();
+}
+
+
 function prevent_external_script_execution(): void {
 	if ( ! function_exists( 'get_option' ) ) {
 		header( 'HTTP/1.0 403 Forbidden' );
