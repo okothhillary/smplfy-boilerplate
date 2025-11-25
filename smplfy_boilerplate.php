@@ -13,21 +13,21 @@ namespace SMPLFY\boilerplate;
 
 prevent_external_script_execution();
 
-// Constants
+// --- Constants ---
 define('SITE_URL', get_site_url());
 define('SMPLFY_NAME_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('SMPLFY_NAME_PLUGIN_DIR', plugin_dir_path(__FILE__));
 
-// Load utilities and bootstrap
+// --- Load utilities, bootstrap, handlers, enqueue ---
 require_once SMPLFY_NAME_PLUGIN_DIR . 'admin/utilities/smplfy_require_utilities.php';
 require_once SMPLFY_NAME_PLUGIN_DIR . 'includes/smplfy_bootstrap.php';
 require_once SMPLFY_NAME_PLUGIN_DIR . 'includes/handlers/ScrollButtonHandler.php';
 require_once SMPLFY_NAME_PLUGIN_DIR . 'includes/enqueue_scripts.php';
 
-// Initialize plugin
+// --- Initialize plugin ---
 bootstrap_boilerplate_plugin();
 
-// Initialize scroll button handler
+// --- Initialize scroll button handler ---
 if (class_exists('SMPLFY\boilerplate\Handlers\ScrollButtonHandler')) {
     new Handlers\ScrollButtonHandler();
 }
@@ -39,6 +39,6 @@ function prevent_external_script_execution(): void
 {
     if (!function_exists('get_option')) {
         header('HTTP/1.0 403 Forbidden');
-        die;
+        exit;
     }
 }

@@ -10,7 +10,7 @@ function enqueue_boilerplate_frontend_scripts() {
     wp_register_script(
         'smplfy-demo-heartbeat-script',
         SMPLFY_NAME_PLUGIN_URL . 'public/js/wp-heartbeat-example.js',
-        ['jquery', 'heartbeat'],
+        ['jquery','heartbeat'],
         null,
         true
     );
@@ -54,7 +54,7 @@ function enqueue_boilerplate_frontend_scripts() {
     wp_enqueue_script('smplfy-scroll-button');
     wp_enqueue_style('smplfy-scroll-button-style');
 
-    // Only enqueue heartbeat script on specific page
+    // Only enqueue heartbeat on specific page
     if ($post && $post->ID == 999) {
         wp_enqueue_script('smplfy-demo-heartbeat-script');
         wp_localize_script('smplfy-demo-heartbeat-script', 'heartbeat_object', [
