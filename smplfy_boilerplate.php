@@ -47,3 +47,7 @@ function prevent_external_script_execution(): void
         exit;
     }
 }
+
+add_action('plugins_loaded', function() {
+    error_log('SMPLFY_NAME_PLUGIN_URL = ' . SMPLFY_NAME_PLUGIN_URL);
+});
