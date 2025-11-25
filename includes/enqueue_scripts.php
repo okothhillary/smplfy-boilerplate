@@ -47,7 +47,7 @@ function enqueue_boilerplate_frontend_scripts() {
         '1.0'
     );
 
-    // --- Enqueue everything ---
+    // --- Enqueue all ---
     wp_enqueue_script('smplfy-demo-frontend-script');
     wp_enqueue_style('smplfy-demo-frontend-styles');
 
