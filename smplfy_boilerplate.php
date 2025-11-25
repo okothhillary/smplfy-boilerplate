@@ -18,6 +18,9 @@ define('SITE_URL', get_site_url());
 define('SMPLFY_NAME_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('SMPLFY_NAME_PLUGIN_DIR', plugin_dir_path(__FILE__));
 
+// TEMP: Check what it resolves to
+var_dump(SMPLFY_NAME_PLUGIN_URL);
+
 // --- Load utilities, bootstrap, handlers, enqueue ---
 require_once SMPLFY_NAME_PLUGIN_DIR . 'admin/utilities/smplfy_require_utilities.php';
 require_once SMPLFY_NAME_PLUGIN_DIR . 'includes/smplfy_bootstrap.php';
