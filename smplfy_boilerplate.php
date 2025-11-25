@@ -19,6 +19,8 @@ define('SMPLFY_NAME_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('SMPLFY_NAME_PLUGIN_DIR', plugin_dir_path(__FILE__));
 
 // TEMP: Check what it resolves to
+error_log('SMPLFY_NAME_PLUGIN_URL: ' . SMPLFY_NAME_PLUGIN_URL);
+
 var_dump(SMPLFY_NAME_PLUGIN_URL);
 
 // --- Load utilities, bootstrap, handlers, enqueue ---
