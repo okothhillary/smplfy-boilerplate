@@ -20,10 +20,10 @@ use WP_Error;
  * @method static int|WP_Error add( ExampleEntity $entity )
  */
 class ExampleRepository extends SMPLFY_BaseRepository {
-	public function __construct( SMPLFY_GravityFormsApiWrapper $gravityFormsApi ) {
-		$this->entityType = ExampleEntity::class;
-		$this->formId     = FormIds::EXAMPLE_FORM_ID;
+    public function __construct( SMPLFY_GravityFormsApiWrapper $gravityFormsApi ) {
+        $this->entityType = ExampleEntity::class;
+        $this->formId     = FormIds::EXAMPLE_FORM_ID;
 
-		parent::__construct( $gravityFormsApi );
-	}
+        parent::__construct( $gravityFormsApi );
+    }
 }

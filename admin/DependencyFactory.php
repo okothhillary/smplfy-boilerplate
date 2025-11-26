@@ -9,22 +9,22 @@ use SmplfyCore\SMPLFY_GravityFormsApiWrapper;
 
 class DependencyFactory {
 
-	/**
-	 * Create and initialize all dependencies
-	 *
-	 * @return void
-	 */
-	static function create_plugin_dependencies() {
-		$gravityFormsWrapper = new SMPLFY_GravityFormsApiWrapper();
+    /**
+     * Create and initialize all dependencies
+     *
+     * @return void
+     */
+    static function create_plugin_dependencies() {
+        $gravityFormsWrapper = new SMPLFY_GravityFormsApiWrapper();
 
-		// Repositories
-		$exampleRepository = new ExampleRepository( $gravityFormsWrapper );
-		//Usecases
-		$exampleUsecase     = new ExampleUsecase( $exampleRepository );
-		$wpHeartbeatExample = new WPHeartbeatExample( $exampleRepository );
+        // Repositories
+        $exampleRepository = new ExampleRepository( $gravityFormsWrapper );
+        //Usecases
+        $exampleUsecase     = new ExampleUsecase( $exampleRepository );
+        $wpHeartbeatExample = new WPHeartbeatExample( $exampleRepository );
 
 
-		new GravityFormsAdapter( $exampleUsecase );
-		new WordpressAdapter( $wpHeartbeatExample );
-	}
+        new GravityFormsAdapter( $exampleUsecase );
+        new WordpressAdapter( $wpHeartbeatExample );
+    }
 }

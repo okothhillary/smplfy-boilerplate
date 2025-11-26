@@ -6,22 +6,32 @@
  * Author: Thomas Picolo-Donnelly
  * Author URI: https://simplifybiz.com/
  * Requires PHP: 7.4
- * Requires Plugins: smplfy-core
+ * Requires Plugins:  smplfy-core
+ *
+ * @package Bliksem
+ * @author Thomas Picolo-Donnelly
+ * @since 0.0.1
  */
 
 namespace SMPLFY\boilerplate;
 
+
+
+// --- Prevent direct access ---
+if ( ! function_exists('prevent_external_script_execution') ) {
+    function prevent_external_script_execution(): void {
+        if ( ! function_exists( 'get_option' ) ) {
+            header( 'HTTP/1.0 403 Forbidden' );
+            exit;
+        }
+    }
+}
 prevent_external_script_execution();
 
 // --- Constants ---
-define('SITE_URL', get_site_url());
-define('SMPLFY_NAME_PLUGIN_URL', plugin_dir_url(__FILE__));
-define('SMPLFY_NAME_PLUGIN_DIR', plugin_dir_path(__FILE__));
-
-// TEMP: Check what it resolves to
-error_log('SMPLFY_NAME_PLUGIN_URL: ' . SMPLFY_NAME_PLUGIN_URL);
-
-var_dump(SMPLFY_NAME_PLUGIN_URL);
+define( 'SITE_URL', get_site_url() );
+define( 'SMPLFY_NAME_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'SMPLFY_NAME_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 
 // --- Load utilities, bootstrap, handlers, enqueue ---
 require_once SMPLFY_NAME_PLUGIN_DIR . 'admin/utilities/smplfy_require_utilities.php';
@@ -32,22 +42,23 @@ require_once SMPLFY_NAME_PLUGIN_DIR . 'includes/enqueue_scripts.php';
 // --- Initialize plugin ---
 bootstrap_boilerplate_plugin();
 
-// --- Initialize scroll button handler ---
-if (class_exists('SMPLFY\boilerplate\Handlers\ScrollButtonHandler')) {
+// --- Initialize Scroll Button Handler ---
+if ( class_exists('SMPLFY\boilerplate\Handlers\ScrollButtonHandler') ) {
     new Handlers\ScrollButtonHandler();
 }
 
-/**
- * Prevent direct access to plugin files
- */
-function prevent_external_script_execution(): void
-{
-    if (!function_exists('get_option')) {
-        header('HTTP/1.0 403 Forbidden');
-        exit;
-    }
-}
-
+// --- Debug logging ---
 add_action('plugins_loaded', function() {
+    error_log('[SMPLFY] Plugin loaded successfully');
     error_log('SMPLFY_NAME_PLUGIN_URL = ' . SMPLFY_NAME_PLUGIN_URL);
 });
+
+add_action('init', function () {
+    error_log("[SMPLFY TEST] init ran");
+});
+
+add_action('gform_after_submission', function ($entry, $form) {
+    $usecase = new \SMPLFY\boilerplate\ExampleUsecase();
+    $usecase->example_function($entry);
+}, 10, 2);
+
