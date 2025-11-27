@@ -48,10 +48,10 @@ if ( class_exists('SMPLFY\boilerplate\Handlers\ScrollButtonHandler') ) {
 }
 
 // --- Debug logging ---
-add_action('plugins_loaded', function() {
-    error_log('[SMPLFY] Plugin loaded successfully');
-    error_log('SMPLFY_NAME_PLUGIN_URL = ' . SMPLFY_NAME_PLUGIN_URL);
-});
+//add_action('plugins_loaded', function() {
+//    error_log('[SMPLFY] Plugin loaded successfully');
+//    error_log('SMPLFY_NAME_PLUGIN_URL = ' . SMPLFY_NAME_PLUGIN_URL);
+//});
 
 add_action('init', function () {
     error_log("[SMPLFY TEST] init ran");
