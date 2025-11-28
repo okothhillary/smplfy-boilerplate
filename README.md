@@ -1,114 +1,82 @@
-SMPLFY Boilerplate Plugin
+# SMPLFY Boilerplate Plugin
 
-A modular, extensible WordPress boilerplate plugin designed to work alongside the Smplfy Core plugin.
-This structure provides clean separation of concerns using Handlers, Usecases, Entities, and a consistent architecture for adding custom functionality.
+A modular, extensible WordPress boilerplate plugin designed to work alongside the Smplfy Core plugin. This structure provides clean separation of concerns using Handlers, Usecases, Entities, and a consistent architecture for adding custom functionality.
 
-📌 Requirements
+## 📌 Requirements
 
-WordPress 6+
+- WordPress 6+
+- PHP 8+
+- Gravity Forms (only if using GF features)
+- Smplfy Core plugin (required)
 
-PHP 8+
+## 🚀 What This Boilerplate Gives You
 
-Gravity Forms (only if using GF features)
+- A clean, structured way to add custom features.
+- Automatic loading of:  
+  - Handlers  
+  - Usecases  
+  - Entities  
+  - Assets  
+- Reusable architecture built on Smplfy Core, which provides:  
+  - Base entity classes  
+  - Shared utilities  
+  - Common helper functions  
 
-Smplfy Core plugin (required)
+## 🔧 How the Boilerplate Works
 
-🚀 What This Boilerplate Gives You
+### Main Plugin File  
+**`smplfy-boilerplate.php`**
 
-A clean, structured way to add custom features.
-
-Automatic loading of:
-
-Handlers
-
-Usecases
-
-Entities
-
-Assets
-
-Reusable architecture built on Smplfy Core, which provides:
-
-Base entity classes
-
-Shared utilities
-
-Common helper functions
-
-🔧 How the Boilerplate Works
-1. Main Plugin File
-
-smplfy-boilerplate.php
-
-Defines plugin constants
-
-Loads the bootstrap
-
-Loads custom handlers/usecases
-
-Registers WordPress hooks
+- Defines plugin constants  
+- Loads the bootstrap  
+- Loads custom handlers/usecases  
+- Registers WordPress hooks  
 
 This is the entry point for everything.
 
-2. Bootstrap
+### Bootstrap  
+**`smplfy_bootstrap.php`**
 
-smplfy_bootstrap.php
+- Sets up autoloading  
+- Initializes the environment  
+- Loads shared functionality  
+- Connects the plugin to Smplfy Core  
 
-Sets up autoloading
-
-Initializes the environment
-
-Loads shared functionality
-
-Connects the plugin to Smplfy Core
-
-3. Handlers
-
-Located in: includes/handlers/
+### Handlers  
+Located in: `includes/handlers/`
 
 Handlers are responsible for WordPress interactions, especially frontend features.
 
-Example:
-ScrollButtonHandler.php
+**Example: `ScrollButtonHandler.php`**
 
-Registers scripts/styles
+- Registers scripts/styles  
+- Outputs button HTML  
+- Hooks into `wp_footer`  
+- Loads JS + CSS for the scroll animation  
 
-Outputs button HTML
+**Handlers = things that “run” inside WordPress.”**
 
-Hooks into wp_footer
-
-Loads JS + CSS for the scroll animation
-
-Handlers = things that “run” inside WordPress.
-
-4. Entities
-
-Located in: includes/entities/
+### Entities  
+Located in: `includes/entities/`
 
 Entities wrap and structure data.
 
-Example:
-ExampleEntity.php
+**Example: `ExampleEntity.php`**
 
-Maps Gravity Forms submission fields into predictable object properties.
+- Maps Gravity Forms submission fields into predictable object properties  
+- Extends Smplfy Core’s `SMPLFY_BaseEntity`  
 
-Extends Smplfy Core’s SMPLFY_BaseEntity.
+**Entities = clean objects representing data.**
 
-Entities = clean objects representing data.
-
-5. Usecases
-
-Located in: includes/usecases/
+### Usecases  
+Located in: `includes/usecases/`
 
 Usecases hold business logic — any multi-step process.
 
-Example:
-ExampleUsecase.php
+**Example: `ExampleUsecase.php`**
 
-Receives entity data
+- Receives entity data  
+- Sends data to remote API/webhook  
+- Logs responses to `debug.log`  
 
-Sends data to remote API/webhook
-
-Logs responses to debug.log
-
-Usecases = logic that does actual work.
+**Usecases = logic that does actual work.**
